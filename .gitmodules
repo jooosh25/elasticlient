@@ -9,4 +9,4 @@
 	url = https://github.com/google/googletest
 [submodule "external/httpmockserver"]
 	path = external/httpmockserver
-	url = https://github.com/seznam/httpmockserver
+	url = https://github.com/jooosh25/httpmockserver
