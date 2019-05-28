@@ -53,7 +53,7 @@ bool SameIndexBulkData::indexDocument(
         const std::string &docType, const std::string &id, const std::string &doc)
 {
     validateDocument(doc, id);
-    impl->data.emplace_back(createControl("index", docType, id), doc);
+    impl->data.emplace_back(createControl("index", docType), doc);
     // return true if bulk has reached its desired capacity
     return impl->data.size() >= impl->size;
 }
@@ -63,7 +63,7 @@ bool SameIndexBulkData::createDocument(
         const std::string &docType, const std::string &id, const std::string &doc)
 {
     validateDocument(doc, id);
-    impl->data.emplace_back(createControl("create", docType, id), doc);
+    impl->data.emplace_back(createControl("create", docType), doc);
     // return true if bulk has reached its desired capacity
     return impl->data.size() >= impl->size;
 }
@@ -72,7 +72,7 @@ bool SameIndexBulkData::updateDocument(
         const std::string &docType, const std::string &id, const std::string &doc)
 {
     validateDocument(doc, id);
-    impl->data.emplace_back(createControl("update", docType, id), doc);
+    impl->data.emplace_back(createControl("update", docType), doc);
     // return true if bulk has reached its desired capacity
     return impl->data.size() >= impl->size;
 }
@@ -121,13 +121,11 @@ Bulk::Bulk(Bulk &&) = default;
 
 
 std::string createControl(const std::string &action,
-                          const std::string &docType,
-                          const std::string &docId)
+                          const std::string &docType)
 {
     std::ostringstream out;
     out << "{\"" << action << "\": {"
-           "\"_type\": \"" << docType << "\", "
-           "\"_id\": \"" << docId << "\"}}";
+           "\"_type\": \"" << docType << "\"}}";
     return out.str();
 }
 

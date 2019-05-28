@@ -21,12 +21,12 @@ namespace elasticlient {
  *
  * Something like that is produced for call:
  * \code
- *   createControl("index", "type1", "1");
- *   {"index": {"_type": "type1", "_id": "1"}}
+ *   createControl("index", "type1");
+ *   {"index": {"_type": "type1"}}
  * \endcode
  */
 std::string createControl(
-        const std::string &action, const std::string &docType, const std::string &docId);
+        const std::string &action, const std::string &docType);
 
 
 struct BulkItem {
