@@ -44,7 +44,7 @@ else(NOT JSONCPP_FOUND) # May some lib already brings JsonCpp lib.
     set(JSONCPP_WITH_TESTS NO CACHE BOOL "")
     add_subdirectory(jsoncpp)
     set(JSONCPP_FOUND TRUE)
-    set(JSONCPP_LIBRARY jsoncpp)
+    set(JSONCPP_LIBRARY jsoncpp jsoncpp_lib)
     set(JSONCPP_INCLUDE_DIRS ${jsoncpp_SOURCE_DIR}/include)
 endif()
 set(JSONCPP_FOUND ${JSONCPP_FOUND} CACHE INTERNAL "")
